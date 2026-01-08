@@ -196,13 +196,12 @@
   // -----------------------------
   // FETCH WhatsApp number from JSON
   // -----------------------------
-  fetch("https://tradingexperts.online/habhi/whatsapp.json")
-    .then(res => res.json())
-    .then(data => {
-      if (!data.number) throw new Error("Number missing in JSON");
-      WHATSAPP_NUMBER = data.number.replace(/\D/g, ''); // keep only digits
-      attachClicks(); // attach click only after number is loaded
-    })
+fetch("whatsapp.json") // relative path
+  .then(res => res.json())
+  .then(data => {
+    WHATSAPP_NUMBER = data.number.replace(/\D/g,'');
+    attachClicks();
+  });
     .catch(err => console.error("Failed to load WhatsApp number", err));
 </script>
 
