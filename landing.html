@@ -196,13 +196,16 @@
   // -----------------------------
   // FETCH WhatsApp number from JSON
   // -----------------------------
-fetch("whatsapp.json") // relative path
-  .then(res => res.json())
-  .then(data => {
-    WHATSAPP_NUMBER = data.number.replace(/\D/g,'');
-    attachClicks();
-  });
-    .catch(err => console.error("Failed to load WhatsApp number", err));
+  fetch("whatsapp.json") // relative path
+    .then(res => res.json())
+    .then(data => {
+      WHATSAPP_NUMBER = data.number.replace(/\D/g, ''); // Remove non-digits
+      attachClicks();
+    })
+    .catch(err => {
+      console.error("Failed to load WhatsApp number", err);
+      // Optional: Fallback alert or default number
+    });
 </script>
 
 
@@ -214,7 +217,7 @@ fetch("whatsapp.json") // relative path
       const minutes = Math.floor(totalSeconds / 60);
       const seconds = totalSeconds % 60;
       document.getElementById("countdown").innerHTML =
-        `${String(minutes).padStart(2, '0')} Min ${String(seconds).padStart(2, '0')} Sec ⏳ Hurry, Limited Seats!`;
+        ${String(minutes).padStart(2, '0')} Min ${String(seconds).padStart(2, '0')} Sec ⏳ Hurry, Limited Seats!;
       if (totalSeconds > 0) {
         totalSeconds--;
         setTimeout(updateTimer, 1000);
