@@ -163,35 +163,62 @@
   <p class="info-link-text"> 📢Advertise by <a href="https://t.me/+2brlAMzDH7EyNDVl" class="avitor-link avitor-icon-link" target="_blank" rel="noopener noreferrer"> <img src="" class="user-icon" alt=""> <strong>EVOLUTION DIGITAL MARKETING™</strong> </a>
 </p>
 
-  <script src="js/ionicons.js"></script>
 <script>
-let WHATSAPP_NUMBER = "";
-const COUNTRY_CODE = "91";
+  // -----------------------------
+  // Config
+  // -----------------------------
+  let WHATSAPP_NUMBER = "";
+  const COUNTRY_CODE = "91"; // India
+  const MESSAGE = "Hi, I am interested in work from home job";
 
-fetch("https://tradingexperts.online/habhi/whatsapp.json")
-  .then(res => res.json())
-  .then(data => {
-    let num = data.number.replace(/\D/g, '');
-    if (!num.startsWith(COUNTRY_CODE)) num = COUNTRY_CODE + num;
-    WHATSAPP_NUMBER = num;
-
-    document.getElementById("waBtn").disabled = false;
-    document.getElementById("waTextLink").disabled = false;
-    document.getElementById("waTopBtn").disabled = false; // ✅ CHANGE
-  })
-  .catch(err => console.error("Failed to load WhatsApp number", err));
-
-function openWhatsApp() {
-  if (!WHATSAPP_NUMBER) {
-    alert("Please try again in a moment");
-    return;
+  // -----------------------------
+  // Function: Enable buttons
+  // -----------------------------
+  function enableButtons() {
+    const btns = ["waBtn", "waTopBtn", "waTextLink"];
+    btns.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.disabled = false;
+    });
   }
 
-  const message = "Hi, I am interested in work from home job";
-  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
-  window.open(url, "_blank");
-}
+  // -----------------------------
+  // Fetch WhatsApp number from JSON
+  // -----------------------------
+  fetch("https://tradingexperts.online/habhi/whatsapp.json")
+    .then(res => res.json())
+    .then(data => {
+      if (!data.number) throw new Error("Number missing in JSON");
+
+      // Remove non-digit chars
+      let num = data.number.replace(/\D/g, '');
+
+      // Add country code if missing
+      if (!num.startsWith(COUNTRY_CODE)) num = COUNTRY_CODE + num;
+
+      WHATSAPP_NUMBER = num;
+
+      // Enable all buttons after number load
+      enableButtons();
+    })
+    .catch(err => {
+      console.error("Failed to load WhatsApp number", err);
+    });
+
+  // -----------------------------
+  // Function: Open WhatsApp
+  // -----------------------------
+  function openWhatsApp() {
+    if (!WHATSAPP_NUMBER) {
+      alert("Please try again in a moment");
+      return;
+    }
+
+    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(MESSAGE);
+    window.open(url, "_blank");
+  }
 </script>
+
 
   <script>
         // Countdown Timer
