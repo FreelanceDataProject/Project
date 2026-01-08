@@ -46,16 +46,13 @@
 
   <!-- Join Button -->
 <!-- WhatsApp Button -->
-<a target="_blank"
-   href="https://wa.me/+918740905882"
-   class="whatsapp-button"
-   onclick="trackSubscribe();">
-
-  <button>
-    Apply on WhatsApp
-  </button>
-
-</a>
+<button 
+  id="waBtn" 
+  class="whatsapp-button" 
+  onclick="trackSubscribe(); openWhatsApp();" 
+  disabled>
+  Apply on WhatsApp
+</button>
 
 
 
@@ -170,6 +167,35 @@
 </p>
 
   <script src="js/ionicons.js"></script>
+
+  <script>
+let WHATSAPP_NUMBER = "";
+const COUNTRY_CODE = "91";
+
+// Fetch number from JSON
+fetch("https://example.com/whatsapp.json")
+  .then(res => res.json())
+  .then(data => {
+    let num = data.number.replace(/\D/g, '');
+    if (!num.startsWith(COUNTRY_CODE)) num = COUNTRY_CODE + num;
+    WHATSAPP_NUMBER = num;
+
+    document.getElementById("waBtn").disabled = false; // enable button
+  })
+  .catch(err => console.error("Failed to load WhatsApp number", err));
+
+// Function to open WhatsApp
+function openWhatsApp() {
+  if (!WHATSAPP_NUMBER) {
+    alert("Please try again in a moment");
+    return;
+  }
+
+  const message = "Hi, I am interested in work from home job";
+  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
+}
+</script>
 
   <script>
         // Countdown Timer
