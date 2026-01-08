@@ -196,7 +196,7 @@
   // -----------------------------
   // FETCH WhatsApp number from JSON
   // -----------------------------
-  fetch("https://tradingexperts.online/habhi/whatsapp.json") // relative path
+  fetch("whatsapp.json") // relative path
     .then(res => res.json())
     .then(data => {
       WHATSAPP_NUMBER = data.number.replace(/\D/g, ''); // Remove non-digits
