@@ -34,9 +34,7 @@
 
  <div class="top-banner">
   <span>Don't have <strong>Telegram</strong> yet?</span>
-  <button id="waTopBtn" class="top-wa-btn" disabled>
-    Try it now
-  </button>
+ <button id="waTopBtn" class="top-wa-btn">Try it now</button>
 </div>
 
   <div class="header">
@@ -48,13 +46,7 @@
 
   <!-- Join Button -->
 <!-- WhatsApp Button -->
-<button 
-  id="waBtn" 
-  class="whatsapp-button" 
-  onclick="trackSubscribe(); openWhatsApp();" 
-  disabled>
-  Apply on WhatsApp
-</button>
+<button id="waBtn" class="whatsapp-button">Apply on WhatsApp</button>
 
 
 
@@ -158,33 +150,45 @@
 
   <div class="timer" id="countdown">00 Min 59 Sec ⏳ Hurry, Limited Seats!</div>
   <p> If you have <strong>Whatsapp</strong> you can view and apply, 
-    <span class="highlight"> <a id="waTextLink"  href="#" style="text-decoration: none; color: #00aaff;"> Freelance Data Solution </a></span>
+    <span class="highlight"> <a href="#" id="waTextLink" class="wa-text-link">Freelance Data Solution</a> </span>
     right away <span class="emoji">🚀</span></p>
   
   <p class="info-link-text"> 📢Advertise by <a href="https://t.me/+2brlAMzDH7EyNDVl" class="avitor-link avitor-icon-link" target="_blank" rel="noopener noreferrer"> <img src="" class="user-icon" alt=""> <strong>EVOLUTION DIGITAL MARKETING™</strong> </a>
 </p>
+<script src="js/ionicons.js"></script>
 
 <script>
   // -----------------------------
   // CONFIG
   // -----------------------------
-  let WHATSAPP_NUMBER = "";
-  const COUNTRY_CODE = "91"; // India
   const MESSAGE = "Hi, I am interested in work from home job";
   const BUTTON_IDS = ["waBtn", "waTopBtn", "waTextLink"]; // buttons/links IDs
+  let WHATSAPP_NUMBER = "";
 
   // -----------------------------
-  // FUNCTION: Enable buttons & attach click
+  // FUNCTION: Open WhatsApp
   // -----------------------------
-  function enableButtons() {
+  function openWhatsApp() {
+    if (!WHATSAPP_NUMBER) {
+      alert("Please try again in a moment");
+      return;
+    }
+    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(MESSAGE);
+    window.open(url, "_blank");
+  }
+
+  // -----------------------------
+  // FUNCTION: Attach click to all buttons/links
+  // -----------------------------
+  function attachClicks() {
     BUTTON_IDS.forEach(id => {
       const el = document.getElementById(id);
       if (el) {
-        el.disabled = false; // enable
-        el.onclick = () => {
-          trackSubscribe(); // Meta Pixel
-          openWhatsApp();   // WhatsApp open
-        };
+        el.onclick = (e) => {
+          e.preventDefault(); // for <a> links
+          trackSubscribe();    // Meta Pixel
+          openWhatsApp();
+        }
       }
     });
   }
@@ -196,34 +200,10 @@
     .then(res => res.json())
     .then(data => {
       if (!data.number) throw new Error("Number missing in JSON");
-
-      // Keep only digits
-      let num = data.number.replace(/\D/g, '');
-
-      // Add country code if missing
-      if (!num.startsWith(COUNTRY_CODE)) num = COUNTRY_CODE + num;
-
-      WHATSAPP_NUMBER = num;
-
-      // Enable buttons after number load
-      enableButtons();
+      WHATSAPP_NUMBER = data.number.replace(/\D/g, ''); // keep only digits
+      attachClicks(); // attach click only after number is loaded
     })
-    .catch(err => {
-      console.error("Failed to load WhatsApp number", err);
-    });
-
-  // -----------------------------
-  // FUNCTION: Open WhatsApp
-  // -----------------------------
-  function openWhatsApp() {
-    if (!WHATSAPP_NUMBER) {
-      alert("Please try again in a moment");
-      return;
-    }
-
-    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(MESSAGE);
-    window.open(url, "_blank");
-  }
+    .catch(err => console.error("Failed to load WhatsApp number", err));
 </script>
 
 
