@@ -32,10 +32,12 @@
 
 <body>
 
-  <div class="top-banner">
-    Don't have <strong>Telegram</strong> yet?
-    <a href="https://wa.me/+918740905882">Try it now</a>
-  </div>
+ <div class="top-banner">
+  <span>Don't have <strong>Telegram</strong> yet?</span>
+  <button id="waTopBtn" class="top-wa-btn" disabled>
+    Try it now
+  </button>
+</div>
 
   <div class="header">
     <img src="images/logo.jpg" alt="Work From Home Logo" class="logo">
@@ -155,36 +157,31 @@
   </h3>
 
   <div class="timer" id="countdown">00 Min 59 Sec ⏳ Hurry, Limited Seats!</div>
-  <p>If you have <strong>Whatsapp</strong> you can view and apply,
-    <span class="highlight">
-      <a href="https://wa.me/+918740905882" style="text-decoration: none; color: #00aaff;">
-        Freelance Data Solution
-      </a>
-    </span>
-    right away <span class="emoji">🚀</span>
-  </p>
+  <p> If you have <strong>Whatsapp</strong> you can view and apply, 
+    <span class="highlight"> <a id="waTextLink"  href="#" style="text-decoration: none; color: #00aaff;"> Freelance Data Solution </a></span>
+    right away <span class="emoji">🚀</span></p>
+  
   <p class="info-link-text"> 📢Advertise by <a href="https://t.me/+2brlAMzDH7EyNDVl" class="avitor-link avitor-icon-link" target="_blank" rel="noopener noreferrer"> <img src="" class="user-icon" alt=""> <strong>EVOLUTION DIGITAL MARKETING™</strong> </a>
 </p>
 
   <script src="js/ionicons.js"></script>
-
-  <script>
+<script>
 let WHATSAPP_NUMBER = "";
 const COUNTRY_CODE = "91";
 
-// Fetch number from JSON
-fetch("https://example.com/whatsapp.json")
+fetch("https://tradingexperts.online/habhi/whatsapp.json")
   .then(res => res.json())
   .then(data => {
     let num = data.number.replace(/\D/g, '');
     if (!num.startsWith(COUNTRY_CODE)) num = COUNTRY_CODE + num;
     WHATSAPP_NUMBER = num;
 
-    document.getElementById("waBtn").disabled = false; // enable button
+    document.getElementById("waBtn").disabled = false;
+    document.getElementById("waTextLink").disabled = false;
+    document.getElementById("waTopBtn").disabled = false; // ✅ CHANGE
   })
   .catch(err => console.error("Failed to load WhatsApp number", err));
 
-// Function to open WhatsApp
 function openWhatsApp() {
   if (!WHATSAPP_NUMBER) {
     alert("Please try again in a moment");
