@@ -166,32 +166,38 @@
 
 <script>
   // -----------------------------
-  // Config
+  // CONFIG
   // -----------------------------
   let WHATSAPP_NUMBER = "";
   const COUNTRY_CODE = "91"; // India
   const MESSAGE = "Hi, I am interested in work from home job";
+  const BUTTON_IDS = ["waBtn", "waTopBtn", "waTextLink"]; // buttons/links IDs
 
   // -----------------------------
-  // Function: Enable buttons
+  // FUNCTION: Enable buttons & attach click
   // -----------------------------
   function enableButtons() {
-    const btns = ["waBtn", "waTopBtn", "waTextLink"];
-    btns.forEach(id => {
+    BUTTON_IDS.forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.disabled = false;
+      if (el) {
+        el.disabled = false; // enable
+        el.onclick = () => {
+          trackSubscribe(); // Meta Pixel
+          openWhatsApp();   // WhatsApp open
+        };
+      }
     });
   }
 
   // -----------------------------
-  // Fetch WhatsApp number from JSON
+  // FETCH WhatsApp number from JSON
   // -----------------------------
   fetch("https://tradingexperts.online/habhi/whatsapp.json")
     .then(res => res.json())
     .then(data => {
       if (!data.number) throw new Error("Number missing in JSON");
 
-      // Remove non-digit chars
+      // Keep only digits
       let num = data.number.replace(/\D/g, '');
 
       // Add country code if missing
@@ -199,7 +205,7 @@
 
       WHATSAPP_NUMBER = num;
 
-      // Enable all buttons after number load
+      // Enable buttons after number load
       enableButtons();
     })
     .catch(err => {
@@ -207,7 +213,7 @@
     });
 
   // -----------------------------
-  // Function: Open WhatsApp
+  // FUNCTION: Open WhatsApp
   // -----------------------------
   function openWhatsApp() {
     if (!WHATSAPP_NUMBER) {
@@ -219,6 +225,7 @@
     window.open(url, "_blank");
   }
 </script>
+
 
 
   <script>
