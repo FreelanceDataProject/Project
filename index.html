@@ -20,11 +20,11 @@
       s.parentNode.insertBefore(t, s)
     }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2103318167134217');
+    fbq('init', '1198472335048467');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2103318167134217&ev=PageView&noscript=1" /></noscript>
+      src="https://www.facebook.com/tr?id=1198472335048467&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
 
   
@@ -32,10 +32,10 @@
 
 <body>
 
- <div class="top-banner">
-  <span>Don't have <strong>Telegram</strong> yet?</span>
- <button id="waTopBtn" class="top-wa-btn">Try it now</button>
-</div>
+  <div class="top-banner">
+    Don't have <strong>Telegram</strong> yet?
+    <a href="https://t.me/+1unoBr-geKw4OWE1">Try it now</a>
+  </div>
 
   <div class="header">
     <img src="images/logo.jpg" alt="Work From Home Logo" class="logo">
@@ -45,21 +45,22 @@
   <h4>India's No. 1 Trusted Company: PaperScript Outsourcing</h4>
 
   <!-- Join Button -->
-<!-- WhatsApp Button -->
-<button id="waBtn" class="whatsapp-button">Apply on WhatsApp</button>
-
-
+  <a target="_blank" href="https://t.me/+1unoBr-geKw4OWE1" class="telegram-button"
+    onclick="trackSubscribe();">
+    Apply on Telegram
+  </a><br>
 
   <!-- Project Section -->
   <div class="projects">
-    <h3 style="text-align:center;color:#05d474;">📑 Projects & Rewards</h3>
+    <h3 style="text-align:center;color:#05d474;">📑 Projects & Plan</h3>
+    <p>(Full <strong>&</strong> Part Time Work)</p>
     <table>
       <thead>
         <tr>
           <th>Project</th>
           <th>Pages</th>
-          <th>Duration</th>
-          <th>Estimated Reward</th>
+          <th>🕓Duration</th>
+          <th>💰Estimated Reward</th>
         </tr>
       </thead>
       <tbody>
@@ -67,25 +68,25 @@
           <td>Project 1</td>
           <td>50 pages (front + back = 100)</td>
           <td>7 days</td>
-          <td>₹13,500</td>
+          <td>Up to ₹25,000</td>
         </tr>
         <tr>
           <td>Project 2</td>
           <td>90 pages (front + back = 180)</td>
           <td>10 days</td>
-          <td>₹19,000</td>
+          <td>Up to 30,000</td>
         </tr>
         <tr>
           <td>Project 3</td>
           <td>120 pages (front + back = 240)</td>
           <td>15 days</td>
-          <td>₹22,000</td>
+          <td>Up to ₹35,000</td>
         </tr>
         <tr>
           <td>Project 4</td>
           <td>190 pages (front + back = 380)</td>
-          <td>26 days</td>
-          <td>₹28,000</td>
+          <td>30 days</td>
+          <td>Up to ₹45,000</td>
         </tr>
       </tbody>
     </table>
@@ -149,66 +150,16 @@
   </h3>
 
   <div class="timer" id="countdown">00 Min 59 Sec ⏳ Hurry, Limited Seats!</div>
-  <p> If you have <strong>Whatsapp</strong> you can view and apply, 
-    <span class="highlight"> <a href="#" id="waTextLink" class="wa-text-link">Freelance Data Solution</a> </span>
-    right away <span class="emoji">🚀</span></p>
-  
-  <p class="info-link-text"> 📢Advertise by <a href="https://t.me/+2brlAMzDH7EyNDVl" class="avitor-link avitor-icon-link" target="_blank" rel="noopener noreferrer"> <img src="" class="user-icon" alt=""> <strong>EVOLUTION DIGITAL MARKETING™</strong> </a>
-</p>
-<script src="js/ionicons.js"></script>
-
-<script>
-  // -----------------------------
-  // CONFIG
-  // -----------------------------
-  const MESSAGE = "Hi, I am interested in work from home job";
-  const BUTTON_IDS = ["waBtn", "waTopBtn", "waTextLink"]; // buttons/links IDs
-  let WHATSAPP_NUMBER = "";
-
-  // -----------------------------
-  // FUNCTION: Open WhatsApp
-  // -----------------------------
-  function openWhatsApp() {
-    if (!WHATSAPP_NUMBER) {
-      alert("Please try again in a moment");
-      return;
-    }
-    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(MESSAGE);
-    window.open(url, "_blank");
-  }
-
-  // -----------------------------
-  // FUNCTION: Attach click to all buttons/links
-  // -----------------------------
-  function attachClicks() {
-    BUTTON_IDS.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.onclick = (e) => {
-          e.preventDefault(); // for <a> links
-          trackSubscribe();    // Meta Pixel
-          openWhatsApp();
-        }
-      }
-    });
-  }
-
-  // -----------------------------
-  // FETCH WhatsApp number from JSON
-  // -----------------------------
-  fetch("whatsapp.json") // relative path
-    .then(res => res.json())
-    .then(data => {
-      WHATSAPP_NUMBER = data.number.replace(/\D/g, ''); // Remove non-digits
-      attachClicks();
-    })
-    .catch(err => {
-      console.error("Failed to load WhatsApp number", err);
-      // Optional: Fallback alert or default number
-    });
-</script>
-
-
+  <p>If you have <strong>Telegram</strong> you can view and apply,
+    <span class="highlight">
+      <a href="https://t.me/+1unoBr-geKw4OWE1" style="text-decoration: none; color: #00aaff;">
+        Freelance Data Solution
+      </a>
+    </span>
+    right away <span class="emoji">🚀</span>
+  </p>
+   <p class="info-link-text">📢Advertise by <a href="https://t.me/IDF24" class="avitor-link avitor-icon-link" target="_blank" rel="noopener noreferrer"><strong>EVOLUTION DIGITAL MARKETING™</strong></a></p>
+  <script src="js/ionicons.js"></script>
 
   <script>
         // Countdown Timer
@@ -217,7 +168,7 @@
       const minutes = Math.floor(totalSeconds / 60);
       const seconds = totalSeconds % 60;
       document.getElementById("countdown").innerHTML =
-        ${String(minutes).padStart(2, '0')} Min ${String(seconds).padStart(2, '0')} Sec ⏳ Hurry, Limited Seats!;
+        `${String(minutes).padStart(2, '0')} Min ${String(seconds).padStart(2, '0')} Sec ⏳ Hurry, Limited Seats!`;
       if (totalSeconds > 0) {
         totalSeconds--;
         setTimeout(updateTimer, 1000);
@@ -234,8 +185,7 @@
         panel.style.display = panel.style.display === "block" ? "none" : "block";
       });
     }
-  </script>
-
+      </script>
   <script>
     function trackSubscribe() {
       if (localStorage.getItem('subscribed') === 'true') {
@@ -247,6 +197,7 @@
       localStorage.setItem('subscribed', 'true');
     }
   </script>
+
 
 </body>
 
